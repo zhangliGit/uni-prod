@@ -1,0 +1,46 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页
+    // 主模块
+		// {
+		// 	"path": "pages/protal/index",
+		// 	"style": {
+		// 	}
+		// }, {
+		// 	"path": "pages/protal/list",
+		// 	"style": {
+  //       "enablePullDownRefresh": true
+		// 	}
+		// }, {
+		// 	"path": "pages/protal/detail"
+		// }
+    // 门禁模块
+    {
+      "path": "pages/door/index",
+      "style": {}
+    }, {
+      "path": "pages/door/list",
+      "style": {
+        "enablePullDownRefresh": true
+      }
+    }, {
+      "path": "pages/door/detail",
+      "style" : {}
+    }
+   ],
+	"globalStyle": {
+    // 禁用头部导航栏
+		"h5": {
+			"titleNView": false
+		},
+    "pullToRefresh": {
+    	"style": "circle",
+    	"color": "#FC3F78",
+    	"offset": "0px"
+    },
+    "onReachBottomDistance": 200,
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#007aff",
+		"backgroundColor": "#F8F8F8"
+	}
+}
