@@ -4,10 +4,9 @@
 		'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
 		'uni-calendar-item--checked':(calendar.fullDate === weeks.fullDate && !weeks.isDay) ,
 		'uni-calendar-item--multiple': weeks.multiple
-		}"
-	 @click="choiceDate(weeks)">
+		}" @click="choiceDate(weeks)">
 		<view class="uni-calendar-item__weeks-box-item">
-			<text v-if="selected&&weeks.extraInfo" class="uni-calendar-item__weeks-box-circle"></text>
+			<text v-if="selected&&weeks.extraInfo" :class="['uni-calendar-item__weeks-box-circle',weeks.staue?'uni-calendar-item__weeks-box-error':'uni-calendar-item__weeks-box-success']"></text>
 			<text class="uni-calendar-item__weeks-box-text" :class="{
 				'uni-calendar-item--isDay-text': weeks.isDay,
 				'uni-calendar-item--isDay':calendar.fullDate === weeks.fullDate && weeks.isDay,
@@ -86,13 +85,13 @@
 	}
 
 	.uni-calendar-item__weeks-box-text {
-		font-size: $uni-font-size-base;
-		color: $uni-text-color;
+		font-size: 28rpx;
+		color: #333;
 	}
 
 	.uni-calendar-item__weeks-lunar-text {
-		font-size: $uni-font-size-sm;
-		color: $uni-text-color;
+		font-size: 24rpx;
+		color: #333;
 	}
 
 	.uni-calendar-item__weeks-box-item {
@@ -114,38 +113,43 @@
 		width: 8px;
 		height: 8px;
 		border-radius: 8px;
-		background-color: $uni-color-error;
+		
 
 	}
-
+	.uni-calendar-item__weeks-box-success{	
+		background-color: $u-type-error;
+	}
+	.uni-calendar-item__weeks-box-error{	
+		background-color: $u-type-success;
+	}
 	.uni-calendar-item--disable {
-		background-color: rgba(249, 249, 249, $uni-opacity-disabled);
-		color: $uni-text-color-disable;
+		background-color: rgba(249, 249, 249, 0.3);
+		color: #c0c0c0;
 	}
 
 	.uni-calendar-item--isDay-text {
-		color: $uni-color-primary;
+		color: #007aff;
 	}
 
 	.uni-calendar-item--isDay {
-		background-color: $uni-color-primary;
+		background-color: #007aff;
 		opacity: 0.8;
 		color: #fff;
 	}
 
 	.uni-calendar-item--extra {
-		color: $uni-color-error;
+		color: #dd524d;
 		opacity: 0.8;
 	}
 
 	.uni-calendar-item--checked {
-		background-color: $uni-color-primary;
+		background-color: #007aff;
 		color: #fff;
 		opacity: 0.8;
 	}
 
 	.uni-calendar-item--multiple {
-		background-color: $uni-color-primary;
+		background-color: #007aff;
 		color: #fff;
 		opacity: 0.8;
 	}

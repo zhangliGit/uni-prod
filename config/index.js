@@ -4,12 +4,13 @@
  */
 
 const ConfigEnv = process.env.NODE_ENV
-let hostEnv = ''
-
+let api_url= ''
 if (ConfigEnv === 'production') {
-  hostEnv = ''
+  api_url = '/api_url'
 } else if (ConfigEnv === 'development') {
-  hostEnv = ''
+  api_url = '/api_url'
 }
 
-export default hostEnv
+export default {
+  api_url
+}

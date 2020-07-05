@@ -12,7 +12,28 @@
  * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
  */
 
+@import '@/uview/libs/css/color.scss';
+
 /* 颜色变量 */
+$main-color: #2979ff;
+$title-color: #333;
+$des-color: #666;
+$second-color: #999;
+$dark-color: #ccc;
+$bor-color: #eee;
+$tip-color: #ff0000;
+
+/**
+ * @box-mar 元素与界面左右间距 普通块之间的间距
+ * @box-padd 元素内间距
+ */
+$box-mar: 20rpx;
+$box-padd: 20rpx 30rpx;
+
+/**
+ * @radius 圆角大小
+ */
+$radius: 8rpx;
 
 /* 行为相关颜色 */
 $uni-color-primary: #007aff;

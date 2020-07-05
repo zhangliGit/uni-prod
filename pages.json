@@ -1,46 +1,33 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页
-    // 主模块
-		// {
-		// 	"path": "pages/protal/index",
-		// 	"style": {
-		// 	}
-		// }, {
-		// 	"path": "pages/protal/list",
-		// 	"style": {
-  //       "enablePullDownRefresh": true
-		// 	}
-		// }, {
-		// 	"path": "pages/protal/detail"
-		// }
-    // 门禁模块
+  "easycom": {
+    "^u-(.*)": "@/uview/components/u-$1/u-$1.vue"
+  },
+  "pages": [
     {
-      "path": "pages/door/index",
+      "path": "pages/index",
       "style": {}
-    }, {
-      "path": "pages/door/list",
-      "style": {
-        "enablePullDownRefresh": true
-      }
-    }, {
-      "path": "pages/door/detail",
-      "style" : {}
+    },
+    {
+      "path": "pages/protal/main",
+      "style": {}
     }
    ],
-	"globalStyle": {
+  "globalStyle": {
     // 禁用头部导航栏
-		"h5": {
-			"titleNView": false
-		},
-    "pullToRefresh": {
-    	"style": "circle",
-    	"color": "#FC3F78",
-    	"offset": "0px"
+    "h5": {
+      "titleNView": true
     },
+    //#ifdef H5
+    "pullToRefresh": {
+      "style": "circle",
+      "color": "#FC3F78",
+      "offset": "0px"
+    },
+    //#endif
     "onReachBottomDistance": 200,
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#007aff",
-		"backgroundColor": "#F8F8F8"
-	}
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "平安校园",
+    "navigationBarBackgroundColor": "#007aff",
+    "backgroundColor": "#F8F8F8"
+  }
 }

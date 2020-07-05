@@ -1,7 +1,7 @@
 {
-    "name" : "平安校园",
-    "appid" : "__UNI__ED9F11E",
-    "description" : "平安校园",
+    "name" : "百宝箱",
+    "appid" : "__UNI__CE0BDFE",
+    "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -9,6 +9,7 @@
     "app-plus" : {
         "usingComponents" : true,
         "nvueCompiler" : "uni-app",
+        "compilerVersion" : 3,
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -44,21 +45,26 @@
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
+                ],
+                "abiFilters" : [ "armeabi-v7a", "x86" ]
             },
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "ad" : {}
+            }
         }
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx02c23d5ba971d7b8",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "es6" : true,
+            "minified" : true
         },
         "usingComponents" : true
     },
@@ -72,21 +78,30 @@
         "usingComponents" : true
     },
     "h5" : {
-        "title" : "平安校园移动端",
-        "template" : "index.html",
+        "title" : "",
+        "domain" : "xiaoyueyue.com.cn",
         "router" : {
             "mode" : "hash",
-            "base" : "/door/"
+            "base" : "/"
         },
         "devServer" : {
             "https" : false,
-            "port" : 3005
+            "port" : "",
+            "proxy" : {
+                "/api_url" : {
+                    "target" : "http://192.168.2.134:10166/",
+                    "changeOrigin" : true,
+                    "pathRewrite" : {
+                        "^/api_url" : ""
+                    }
+                }
+            }
         },
         "optimization" : {
             "treeShaking" : {
                 "enable" : true
             }
         },
-        "domain" : "localhost"
+        "template" : "template.html"
     }
 }
