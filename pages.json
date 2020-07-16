@@ -15,7 +15,7 @@
   "globalStyle": {
     // 禁用头部导航栏
     "h5": {
-      "titleNView": true
+      "titleNView": false
     },
     //#ifdef H5
     "pullToRefresh": {

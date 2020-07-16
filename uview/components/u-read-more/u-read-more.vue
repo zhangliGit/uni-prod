@@ -1,9 +1,12 @@
 <template>
 	<view class="">
-		<view class="u-content" :style="{ height: isLongContent && !showMore ? showHeight + 'px' : 'auto' }">
+		<view class="u-content" :class="[elId]" :style="{ height: isLongContent && !showMore ? showHeight + 'rpx' : 'auto' }">
 			<slot></slot>
 		</view>
-		<view @tap="toggleReadMore" v-if="isLongContent" class="u-showmore-wrap" :class="{ 'u-show-more': showMore }">
+		<view @tap="toggleReadMore" v-if="isLongContent" class="u-showmore-wrap" 
+			:class="{ 'u-show-more': showMore }" 
+			:style="[innerShadowStyle]"
+		>
 			<text class="u-readmore-btn" :style="{
 				fontSize: fontSize + 'rpx',
 				color: color
@@ -31,7 +34,7 @@
 	export default {
 		name: "u-read-more",
 		props: {
-			// 默认的显示占位高度，单位为px
+			// 默认的显示占位高度，单位为rpx
 			showHeight: {
 				type: [Number, String],
 				default: 400
@@ -60,6 +63,17 @@
 			fontSize: {
 				type: [String, Number],
 				default: 28
+			},
+			// 是否显示阴影
+			shadowStyle: {
+				type: Object,
+				default() {
+					return {
+						backgroundImage: "linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%)",
+						paddingTop: "300rpx",
+						marginTop: "-300rpx"
+					}
+				}
 			}
 		},
 		watch: {
@@ -70,12 +84,18 @@
 		computed: {
 			paramsChange() {
 				return `${this.toggle}-${this.showHeight}`;
+			},
+			// 展开后无需阴影，收起时才需要阴影样式
+			innerShadowStyle() {
+				if(this.showMore) return {};
+				else return this.shadowStyle
 			}
 		},
 		data() {
 			return {
 				isLongContent: false, // 是否需要隐藏一部分内容
 				showMore: false, // 当前隐藏与显示的状态，true-显示，false-收起
+				elId: this.$u.guid(), // 生成唯一class
 			};
 		},
 		mounted() {
@@ -83,19 +103,13 @@
 		},
 		methods: {
 			init() {
-				const query = uni.createSelectorQuery(this).in(this);
-				query
-					.select('.u-content')
-					.boundingClientRect(res => {
-						if (res) {
-							// 判断高度，如果真实内容高度大于占位高度，则显示收起与展开的控制按钮
-							if (res.height > this.showHeight) {
-								this.isLongContent = true;
-								this.showMore = false;
-							}
-						}
-					})
-					.exec();
+				this.$uGetRect('.' + this.elId).then(res => {
+					// 判断高度，如果真实内容高度大于占位高度，则显示收起与展开的控制按钮
+					if (res.height > uni.upx2px(this.showHeight)) {
+						this.isLongContent = true;
+						this.showMore = false;
+					}
+				})
 			},
 			// 展开或者收起
 			toggleReadMore() {
@@ -108,6 +122,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "../../libs/css/style.components.scss";
+	
 	.u-content {
 		font-size: 30rpx;
 		color: $u-content-color;
@@ -120,9 +136,6 @@
 	.u-showmore-wrap {
 		position: relative;
 		width: 100%;
-		background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #fff 80%);
-		padding-top: 300rpx;
-		margin-top: -300rpx;
 		padding-bottom: 26rpx;
 		display: flex;
 		align-items: center;

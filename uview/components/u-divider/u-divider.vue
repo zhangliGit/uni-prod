@@ -5,12 +5,12 @@
 		marginBottom: marginBottom + 'rpx',
 		marginTop: marginTop + 'rpx'
 	}" @tap="click">
-		<view class="u-divider-line" :style="[lineStyle]"></view>
-		<view class="u-divider-text" :style="{
+		<view class="u-divider-line" :class="[type ? 'u-divider-line--bordercolor--' + type : '']" :style="[lineStyle]"></view>
+		<view v-if="useSlot" class="u-divider-text" :style="{
 			color: color,
 			fontSize: fontSize + 'rpx'
 		}"><slot /></view>
-		<view class="u-divider-line" :style="[lineStyle]"></view>
+		<view class="u-divider-line" :class="[type ? 'u-divider-line--bordercolor--' + type : '']" :style="[lineStyle]"></view>
 	</view>
 </template>
 
@@ -26,6 +26,7 @@
  * @property {String} bg-color 整个divider的背景颜色（默认呢#ffffff）
  * @property {String Number} height 整个divider的高度，单位rpx（默认40）
  * @property {String} type 将线条设置主题色（默认primary）
+ * @property {Boolean} useSlot 是否使用slot传入内容，如果不传入，中间不会有空隙（默认true）
  * @property {String Number} margin-top 与前一个组件的距离，单位rpx（默认0）
  * @property {String Number} margin-bottom 与后一个组件的距离，单位rpx（0）
  * @event {Function} click divider组件被点击时触发
@@ -79,6 +80,11 @@ export default {
 			type: [String, Number],
 			default: 0
 		},
+		// 是否使用slot传入内容，如果不用slot传入内容，先的中间就不会有空隙
+		useSlot: {
+			type: Boolean,
+			default: true
+		}
 	},
 	computed: {
 		lineStyle() {
@@ -87,7 +93,6 @@ export default {
 			else style.width = this.halfWidth + 'rpx';
 			// borderColor优先级高于type值
 			if(this.borderColor) style.borderColor = this.borderColor;
-			else style.borderColor = this.$u.color[this.type];
 			return style;
 		}
 	},
@@ -100,6 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../libs/css/style.components.scss";
 .u-divider {
 	width: 100%;
 	position: relative;
@@ -115,6 +121,26 @@ export default {
 	border-bottom: 1px solid $u-border-color;
 	transform: scale(1, 0.5);
 	transform-origin: center;
+	
+	&--bordercolor--primary {
+		border-color: $u-type-primary;
+	}
+	
+	&--bordercolor--success {
+		border-color: $u-type-success;
+	}
+	
+	&--bordercolor--error {
+		border-color: $u-type-primary;
+	}
+	
+	&--bordercolor--info {
+		border-color: $u-type-info;
+	}
+	
+	&--bordercolor--warning {
+		border-color: $u-type-warning;
+	}
 }
 
 .u-divider-text {

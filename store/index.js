@@ -22,13 +22,13 @@ const store = Vue.observable({
 })
 
 // 修改数据
-const setStore = ({ key, data, isLocal = true }) => {
-  if (isLocal) {
-    const localData = JSON.parse(uni.getStorageSync(projectName) || '{}')
-    localData[key] = data
-    uni.setStorageSync(projectName, JSON.stringify(localData))
+const setStore = (params) => {
+  if (!params || Object.prototype.toString.call(params) !== "[object Object]") return
+  const localData = JSON.parse(uni.getStorageSync(projectName) || '{}')
+  for(let key in params) {
+    localData[key] = params[key]
   }
-  store[key] = data
+  uni.setStorageSync(projectName, JSON.stringify(localData))
 }
 
 /**
@@ -62,4 +62,4 @@ for (const key in apiList) {
   }
 }
 
-export { store, setStore, ...actions }
+export { store, setStore, actions }

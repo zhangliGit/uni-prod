@@ -6,8 +6,8 @@
 			<view class="u-tooltip-item u-tooltip-cancel" hover-class="u-tooltip-cancel-hover" @tap="onCancel">
 				{{cancelBtn ? '取消' : ''}}
 			</view>
-			<view v-if="tips" class="u-tooltip-item u-tooltip-tips">
-				{{tips && mode == 'number' ? '数字键盘' : mode == 'card' ? '身份证键盘' : '车牌号键盘'}}
+			<view v-if="showTips" class="u-tooltip-item u-tooltip-tips">
+				{{tips ? tips : mode == 'number' ? '数字键盘' : mode == 'card' ? '身份证键盘' : '车牌号键盘'}}
 			</view>
 			<view v-if="confirmBtn" @tap="onConfirm" class="u-tooltip-item u-tooltips-submit" hover-class="u-tooltips-submit-hover">
 				{{confirmBtn ? '完成' : ''}}
@@ -63,9 +63,14 @@
 				default: true
 			},
 			// 是否显示工具条中间的提示
-			tips: {
+			showTips: {
 				type: Boolean,
 				default: true
+			},
+			// 工具条中间的提示文字
+			tips: {
+				type: String,
+				default: ''
 			},
 			// 是否显示工具条左边的"取消"按钮
 			cancelBtn: {
@@ -154,6 +159,8 @@
 </script>
 
 <style lang="scss" scoped>
+	@import "../../libs/css/style.components.scss";
+	
 	.u-keyboard {
 		position: relative;
 		z-index: 1003;

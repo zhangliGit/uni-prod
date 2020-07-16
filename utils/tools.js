@@ -3,7 +3,6 @@
  */
 import wx from 'weixin-js-sdk'
 import $ajax from '@u/request.js';
-// import EXIF from 'exif-js'
 import hostEnv from '../config/index.js';
 function resultBack (res) {
   return new Promise(resolve => {
@@ -84,7 +83,7 @@ const tools = {
 	// 弹出确认框
 	confirm(content, cb, isCancle = true) {
 		uni.showModal({
-			title: '提示',
+			title: '温馨提示',
 			content: content,
 			showCancel: isCancle,
 			success: function(res) {

@@ -18,7 +18,7 @@ export default {
 	props: {
 		bgColor: {
 			type: String,
-			default: '#f3f4f6' // 也即：rgb(243, 244, 246)
+			default: 'transparent ' // 背景透明
 		},
 		// 高度
 		height: {
@@ -49,4 +49,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+	@import "../../libs/css/style.components.scss";
+</style>
