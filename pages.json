@@ -8,10 +8,14 @@
       "style": {}
     },
     {
+      "path": "pages/form",
+      "style": {}
+    },
+    {
       "path": "pages/protal/main",
       "style": {}
     }
-   ],
+    ],
   "globalStyle": {
     // 禁用头部导航栏
     "h5": {

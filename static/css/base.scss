@@ -5,7 +5,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 [v-cloak] {
@@ -17,6 +17,7 @@ body {
     Simsun, sans-serif, Helvetica !important;
   font-size: 28rpx !important;
   overflow-x: hidden;
+  color: $u-main-color;
   background-color: $u-bg-color;
   padding-top: constant(safe-area-inset-top);
   padding-left: constant(safe-area-inset-left);
@@ -68,10 +69,13 @@ button {
   overflow: hidden;
 }
 
-.u-scroll-box {
+.u-scroll-h {
   height: 100vh;
 }
 
+.u-zIndex {
+  z-index: 9999;
+}
 /**
  * 元素居中居右
  */
@@ -235,28 +239,28 @@ only screen and (min-device-pixel-ratio: 2) {
  * 字体
  */
 .u-font-01 {
-  font-size: $u-font-01;
+  font-size: $u-font-01 !important;
 }
 
 .u-font-02 {
-  font-size: $u-font-02;
+  font-size: $u-font-02 !important;
 }
 
 .u-font-03 {
-  font-size: $u-font-02;
+  font-size: $u-font-02 !important;
 	transform: scale(.8);
 }
 
 .u-font-1 {
-  font-size: $u-font-1;
+  font-size: $u-font-1 !important;
 }
 
 .u-font-2 {
-  font-size: $u-font-2;
+  font-size: $u-font-2 !important;
 }
 
 .u-font-3 {
-  font-size: $u-font-3;
+  font-size: $u-font-3 !important;
 }
 
 /* 间距 */
@@ -424,6 +428,14 @@ only screen and (min-device-pixel-ratio: 2) {
 
 .u-padd-b40 {
   padding-bottom: $u-mp-40;
+}
+
+/* 元素浮动 */
+.u-float {
+  float: left;
+}
+.u-clear {
+  clear: both;
 }
 
 /* 元素滚动 */

@@ -1,0 +1,20 @@
+/* 用户图像尺寸 */
+.u-user-img-small {
+  width: 72rpx;
+  height: 72rpx;
+  display: block;
+}
+.u-user-img-middle {
+  width: 88rpx;
+  height: 88rpx;
+  display: block;
+}
+.u-user-img-big {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+}
+/* 表单项高度 */
+.u-form-height {
+  min-height: 96rpx;
+}

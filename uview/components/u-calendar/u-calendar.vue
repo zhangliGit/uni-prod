@@ -8,7 +8,7 @@
 				</view>
 				<slot v-else name="tooltip" />
 			</view>
-			<view class="u-calendar__action u-flex u-row-center">
+			<view class="u-calendar__action u-flex u-row-center u-fx u-fx-jc">
 				<view class="u-calendar__action__icon">
 					<u-icon v-if="changeYear" name="arrow-left-double" :color="yearArrowColor" @click="changeYearHandler(0)"></u-icon>
 				</view>
@@ -148,7 +148,7 @@
 			 * */
 			maxDate: {
 				type: [Number, String],
-				default: ''
+				default: '2020-07-24'
 			},
 			// 弹窗顶部左右两边的圆角值
 			borderRadius: {
@@ -491,7 +491,9 @@
 	
 	.u-calendar {
 		color: $u-content-color;
-		
+		.u-hover-class {
+      opacity: .6;
+    }
 		&__header {
 			width: 100%;
 			box-sizing: border-box;
